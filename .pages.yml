@@ -1,0 +1,169 @@
+# Админка сайта: https://app.pagescms.org (вход через GitHub)
+media:
+  input: static/img
+  output: img
+  extensions: [jpg, jpeg, png, webp, svg, gif]
+
+content:
+  - name: site
+    label: "Содержимое сайта"
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: seo
+        label: "SEO (заголовок и описание для поисковиков)"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок вкладки", type: string }
+          - { name: description, label: "Описание для поиска", type: text }
+          - { name: og_image, label: "Картинка для соцсетей", type: image }
+
+      - name: contacts
+        label: "Контакты и соцсети"
+        type: object
+        fields:
+          - { name: location, label: "Город / адрес", type: string }
+          - { name: email, label: "Email", type: string }
+          - { name: phone, label: "Телефон", type: string }
+          - { name: telegram, label: "Telegram (ссылка)", type: string }
+          - { name: instagram, label: "Instagram (ссылка)", type: string }
+          - { name: youtube, label: "YouTube (ссылка)", type: string }
+          - { name: facebook, label: "Facebook (ссылка)", type: string }
+
+      - name: forms
+        label: "Заявки"
+        type: object
+        fields:
+          - { name: endpoint, label: "Адрес приёмника заявок (Google Apps Script)", type: string }
+          - { name: success_title, label: "Заголовок «Спасибо»", type: string }
+          - { name: success_text, label: "Текст «Спасибо»", type: text }
+
+      - name: hero
+        label: "Первый экран"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок", type: string }
+          - { name: button, label: "Текст кнопки", type: string }
+          - { name: image, label: "Большое фото", type: image }
+          - name: cards
+            label: "Карточки справа (3 шт.)"
+            type: object
+            list: { min: 3, max: 3 }
+            fields:
+              - { name: title, label: "Подпись", type: string }
+              - { name: image, label: "Фото", type: image }
+              - { name: link, label: "Ссылка (якорь секции, например #team)", type: string }
+
+      - name: about
+        label: "О проекте"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок", type: string }
+          - { name: paragraphs, label: "Абзацы", type: text, list: true }
+
+      - name: stats
+        label: "Цифры"
+        type: object
+        list: true
+        fields:
+          - { name: value, label: "Число", type: string }
+          - { name: label, label: "Подпись", type: string }
+
+      - name: team
+        label: "Команда"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок", type: string }
+          - { name: text, label: "Описание", type: text }
+          - { name: button, label: "Текст кнопки", type: string }
+          - name: members
+            label: "Специалисты"
+            type: object
+            list: true
+            fields:
+              - { name: name, label: "Имя", type: string }
+              - { name: photo, label: "Фото", type: image }
+              - { name: points, label: "Пункты", type: string, list: true }
+
+      - name: approach
+        label: "Системный подход"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок", type: string }
+          - { name: paragraphs, label: "Абзацы", type: text, list: true }
+
+      - name: steps
+        label: "Этапы работы"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок", type: string }
+          - { name: button, label: "Текст кнопки", type: string }
+          - { name: items, label: "Этапы", type: string, list: true }
+
+      - name: pricing
+        label: "Стоимость (пакеты)"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок", type: string }
+          - { name: button, label: "Текст кнопки", type: string }
+          - { name: icon, label: "Иконка карточек", type: image }
+          - name: tabs
+            label: "Пакеты (вкладки)"
+            type: object
+            list: true
+            fields:
+              - { name: name, label: "Название вкладки", type: string }
+              - name: cards
+                label: "Карточки"
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: "Название", type: string }
+                  - { name: points, label: "Пункты", type: string, list: true }
+                  - { name: duration, label: "Срок (оранжевая плашка)", type: string }
+                  - { name: price, label: "Цена (плашка с рамкой)", type: string }
+
+      - name: results
+        label: "Результаты трансформации"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок", type: string }
+          - { name: image, label: "Фото", type: image }
+          - name: levels
+            label: "Уровни (аккордеон)"
+            type: object
+            list: true
+            fields:
+              - { name: title, label: "Название", type: string }
+              - { name: points, label: "Пункты", type: string, list: true }
+
+      - name: lead
+        label: "Форма заявки"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок", type: string }
+          - { name: subtitle, label: "Подзаголовок", type: string }
+          - { name: image, label: "Картинка", type: image }
+          - { name: button, label: "Текст кнопки", type: string }
+
+      - name: reviews
+        label: "Отзывы"
+        type: object
+        fields:
+          - { name: title, label: "Заголовок", type: string }
+          - name: items
+            label: "Отзывы"
+            type: object
+            list: true
+            fields:
+              - { name: name, label: "Имя", type: string }
+              - { name: photo, label: "Фото", type: image }
+              - { name: text, label: "Текст", type: text }
+
+      - name: footer
+        label: "Подвал"
+        type: object
+        fields:
+          - { name: contacts_title, label: "Заголовок контактов", type: string }
+          - { name: copyright, label: "Копирайт", type: string }
